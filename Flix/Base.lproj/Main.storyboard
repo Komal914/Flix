@@ -48,6 +48,7 @@
                                     <outlet property="posterView" destination="nOC-hu-XqL" id="K2B-oh-rUK"/>
                                     <outlet property="synopsisLabel" destination="4j2-tM-87v" id="wwU-nO-OJK"/>
                                     <outlet property="titleLabel" destination="3Ud-8l-4LX" id="17f-98-xzZ"/>
+                                    <segue destination="V4s-WK-iCp" kind="show" id="G7W-vR-1FA"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -61,16 +62,17 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="75.669642857142847"/>
         </scene>
-        <!--View Controller-->
+        <!--Movie Details View Controller-->
         <scene sceneID="UBb-ZD-kOy">
             <objects>
-                <viewController id="V4s-WK-iCp" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JJ8-cR-kWC">
+                <viewController id="V4s-WK-iCp" customClass="MovieDetailsViewController" customModule="Flix" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JJ8-cR-kWC" customClass="UIMovieDe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Lis-HU-sf3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="MeL-Ud-Uth"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l0q-Oo-zQW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
