@@ -6,13 +6,26 @@
 //
 
 import UIKit
+import AlamofireImage
 
-class MovieGridViewController: UIViewController {
+class MovieGridViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    
+    @IBOutlet var collectionView: UICollectionView!
     var movies = [[String:Any]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumLineSpacing = 4 //vertical
+        layout.minimumInteritemSpacing = 4 //horizontal
+        
+        let width = (view.frame.size.width-layout.minimumInteritemSpacing*2) / 3 //divide into 3
+        layout.itemSize = CGSize(width: width, height: width*1.5) //sizes the poster cell varied to the spacing inbetween
 
         let url = URL(string: "https://api.themoviedb.org/3/movie/297762/similar?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -25,12 +38,30 @@ class MovieGridViewController: UIViewController {
               let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
             self.movies = dataDictionary["results"] as! [[String:Any]] //access key called results in api
             
-            print(self.movies)
+            self.collectionView.reloadData()
             
             
            }
         }
         task.resume()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return movies.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieGridCell", for: indexPath) as! MovieGridCell
+        
+        let movie = movies[indexPath.item]
+        
+        let baseUrl = "http://image.tmdb.org/t/p/w185"
+        let posterPath = movie["poster_path"] as! String
+        let posterUrl = URL(string: baseUrl+posterPath)
+    
+        cell.posterView.af_setImage(withURL: posterUrl!)
+        
+        return cell 
     }
     
 
