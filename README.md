@@ -13,7 +13,7 @@
 - [ ] (2pts) In the detail view, when the user taps the poster, a new screen is presented modally where they can view the trailer.
 
 ### App Walkthrough GIF
-<img src="http://g.recordit.co/RUXzmXe54B.gif" width=250><br>
+<img src="http://g.recordit.co/YKAtuojoDg.gif" width=250><br>
 
 ### Notes
 Describe any challenges encountered while building the app.
@@ -34,7 +34,7 @@ Describe any challenges encountered while building the app.
 
 ### App Walkthrough GIF
 
-<img src="http://g.recordit.co/LjRt1tKgr4.gif" width=250><br>
+<img src="http://g.recordit.co/8EXDyPMonN.gif" width=250><br>
 
 ### Notes
 Describe any challenges encountered while building the app.ix
